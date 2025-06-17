@@ -1,0 +1,29 @@
+REPEAT
+    SET secretNumber = math.random(1, 100)
+    SET maxAttempts = 7
+    SET attemptCount = 0
+    SET guessedCorrectly = false
+
+    PRINT "Guess the number between 1 and 100. You have 7 attempts."
+
+    WHILE attemptCount < maxAttempts AND NOT guessedCorrectly DO
+        PROMPT user for a guess
+        INCREMENT attemptCount
+
+        IF userGuess == secretNumber THEN
+            SET guessedCorrectly = true
+            PRINT "You guessed correctly in", attemptCount, "attempts!"
+        ELSEIF userGuess < secretNumber THEN
+            PRINT "Too low!"
+        ELSE
+            PRINT "Too high!"
+        END IF
+    END WHILE
+
+    IF NOT guessedCorrectly THEN
+        PRINT "You lost! The number was", secretNumber
+    END IF
+
+    PROMPT "Play again? (yes/no)"
+    GET userResponse
+UNTIL userResponse ~= "yes"
