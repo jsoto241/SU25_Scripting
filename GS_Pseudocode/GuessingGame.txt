@@ -1,31 +1,42 @@
 Jose Soto
 
-REPEAT
-    SET secretNumber = math.random(1, 100)
-    SET maxAttempts = 7
-    SET attemptCount = 0
-    SET guessedCorrectly = false
+variable: secretNumber = none  
+variable: maxAttempts = 7  
+variable: attemptCount = 0  
+variable: userGuess = none  
+variable: guessedCorrectly = false  
+variable: userResponse = "yes"  
 
-    PRINT "Guess the number between 1 and 100. You have 7 attempts."
+1. WHILE userResponse == "yes"  
+	1a. Set secretNumber = RANDOM number between 1 and 100  
+	1b. Set attemptCount = 0  
+	1c. Set guessedCorrectly = false  
 
-    WHILE attemptCount < maxAttempts AND NOT guessedCorrectly DO
-        PROMPT user for a guess
-        INCREMENT attemptCount
+	1d. Print: "Guess the number between 1 and 100. You have 7 attempts."  
 
-        IF userGuess == secretNumber THEN
-            SET guessedCorrectly = true
-            PRINT "You guessed correctly in", attemptCount, "attempts!"
-        ELSEIF userGuess < secretNumber THEN
-            PRINT "Too low!"
-        ELSE
-            PRINT "Too high!"
-        END IF
-    END WHILE
+	1e. WHILE attemptCount < maxAttempts AND guessedCorrectly == false  
+		1e.i. Prompt: "Enter your guess: "  
+		1e.ii. Store input in userGuess  
+		1e.iii. Increment attemptCount by 1  
 
-    IF NOT guessedCorrectly THEN
-        PRINT "You lost! The number was", secretNumber
-    END IF
+		1e.iv. IF userGuess == secretNumber  
+			- Set guessedCorrectly = true  
+			- Print: "You guessed correctly in [attemptCount] attempt(s)!"  
+		1e.v. ELSE IF userGuess < secretNumber  
+			- Print: "Too low!"  
+		1e.vi. ELSE  
+			- Print: "Too high!"  
+		END IF  
+	END WHILE  
 
-    PROMPT "Play again? (yes/no)"
-    GET userResponse
-UNTIL userResponse ~= "yes"
+	1f. IF guessedCorrectly == false  
+		- Print: "You lost! The number was [secretNumber]"  
+	END IF  
+
+	1g. Prompt: "Play again? (yes/no): "  
+	1h. Store input in userResponse  
+END WHILE  
+
+2. IF userResponse == "no"  
+	2a. Print: "Thanks for playing! Goodbye."  
+
