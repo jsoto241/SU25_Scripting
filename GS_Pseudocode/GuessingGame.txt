@@ -1,3 +1,5 @@
+Jose Soto
+
 REPEAT
     SET secretNumber = math.random(1, 100)
     SET maxAttempts = 7
