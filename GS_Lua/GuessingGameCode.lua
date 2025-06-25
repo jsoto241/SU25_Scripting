@@ -26,7 +26,7 @@ while userResponse == "yes" do
         userGuess = tonumber(io.read())
         attemptCount = attemptCount + 1
 
-        --Check if number is guessed correctly, and prvide hint if not
+        --Check if number is guessed correctly, and provide hint if not
         if userGuess == secretNumber then
             guessedCorrectly = true
             print("You guessed correctly in " .. attemptCount .. " attempt(s)!")
